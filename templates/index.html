@@ -1,14 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Форма приветствия</title>
+    <title>Лабораторная работа №6</title>
 </head>
 <body>
     <h1>Форма приветствия</h1>
 
-    <form method="POST">
+    <form method="POST" action="/">
         <label for="name">Введите имя:</label>
         <input type="text" id="name" name="name" required>
         <button type="submit">Отправить</button>
@@ -20,6 +21,25 @@
 
     {% if error %}
     <p>{{ error }}</p>
+    {% endif %}
+
+    <hr>
+
+    <h1>Загрузка файла</h1>
+
+    <form method="POST" action="/upload"
+          enctype="multipart/form-data">
+        <label for="file">Выберите файл:</label>
+        <input type="file" id="file" name="file" required>
+        <button type="submit">Загрузить</button>
+    </form>
+
+    {% if upload_message %}
+    <p>{{ upload_message }}</p>
+    {% endif %}
+
+    {% if upload_error %}
+    <p>{{ upload_error }}</p>
     {% endif %}
 </body>
 </html>
